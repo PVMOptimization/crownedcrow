@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="10" fill="#ece1c4"/>
+  <!-- crown -->
+  <path d="M18 22 L24 14 L32 20 L40 14 L46 22 L46 26 L18 26 Z" fill="#7a1a1a"/>
+  <circle cx="24" cy="14" r="1.6" fill="#a07d3a"/>
+  <circle cx="32" cy="20" r="1.6" fill="#a07d3a"/>
+  <circle cx="40" cy="14" r="1.6" fill="#a07d3a"/>
+  <!-- crow body -->
+  <path d="M16 36 C 16 30, 22 28, 32 28 C 42 28, 50 30, 50 36 C 50 44, 42 50, 32 50 C 22 50, 16 44, 16 36 Z" fill="#1a1411"/>
+  <!-- beak -->
+  <path d="M50 36 L58 35 L50 39 Z" fill="#1a1411"/>
+  <!-- eye -->
+  <circle cx="46" cy="34" r="1.4" fill="#ece1c4"/>
+  <circle cx="46" cy="34" r="0.7" fill="#7a1a1a"/>
+</svg>

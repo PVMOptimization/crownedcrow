@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --parchment: #ece1c4;
+  --ink: #1a1411;
+  --oxblood: #7a1a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Newsreader', Georgia, serif;
+  font-feature-settings: 'liga' 1, 'kern' 1, 'onum' 1;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Paper texture: a few overlaid layers — fibers, faint grain, vignette */
+  background-image:
+    /* faint speckle */
+    radial-gradient(rgba(26, 20, 17, 0.04) 1px, transparent 1px),
+    /* warm corner glow (NOT a centered orb) */
+    radial-gradient(120% 80% at 100% 0%, rgba(160, 125, 58, 0.10), transparent 60%),
+    radial-gradient(100% 70% at 0% 100%, rgba(122, 26, 26, 0.06), transparent 55%);
+  background-size: 3px 3px, auto, auto;
+  background-attachment: fixed, fixed, fixed;
+}
+
+::selection {
+  background: var(--oxblood);
+  color: #f4ecd8;
+}
+
+/* fine rule used throughout the masthead and section breaks */
+.rule-thin {
+  border-top: 1px solid rgba(26, 20, 17, 0.55);
+}
+.rule-double {
+  border-top: 3px double rgba(26, 20, 17, 0.55);
+}
+
+/* Letterpress-style text shadow used very sparingly */
+.letterpress {
+  text-shadow: 0 1px 0 rgba(255, 248, 220, 0.5);
+}
+
+/* CTA glow — soft radial behind the call-to-action, not on text */
+.cta-glow {
+  position: relative;
+  isolation: isolate;
+}
+.cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: -22px -32px;
+  background: radial-gradient(closest-side, rgba(122, 26, 26, 0.32), transparent 75%);
+  z-index: -1;
+  filter: blur(14px);
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+.cta-glow:hover::before,
+.cta-glow:focus-visible::before {
+  opacity: 1;
+}
+
+/* honest focus ring */
+:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* The handwritten review notes get a tilt + paper feel */
+.note-paper {
+  background:
+    linear-gradient(180deg, #fbf5e2 0%, #f5ecd0 100%);
+  border: 1px solid rgba(26, 20, 17, 0.08);
+}
+.note-paper.tilt-l { transform: rotate(-1.4deg); }
+.note-paper.tilt-r { transform: rotate(1.6deg); }
+.note-paper.tilt-c { transform: rotate(-0.5deg); }
+
+/* hide scrollbars on the gallery rail but keep functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* gallery plate — paper card with dropshadow, slight rotation when hovered */
+.plate {
+  transition: transform 600ms cubic-bezier(.2,.7,.2,1), box-shadow 600ms;
+}
+.plate:hover {
+  transform: translateY(-4px) rotate(-0.3deg);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
